@@ -214,7 +214,7 @@ Rectangle {
             id: session
             anchors.left: parent.left
             anchors.verticalCenter: parent.verticalCenter
-            width: 160
+            width: 185
             color: Qt.rgba(0, 0, 0, 0.2)
             dropDownColor: Qt.rgba(0, 0, 0, 0.2)
             borderColor: "transparent"
