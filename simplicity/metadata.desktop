@@ -4,7 +4,7 @@ Name=Simplicity
 Description=Simple SDDM theme
 Type=sddm-theme
 Author=Gabriel Retana
-Copyright=(c) 2017, Gabriel Retana
+Copyright=(c) 2019, Gabriel Retana
 Screenshot=simplicity.png
 License=GPL
 Version=0.2
@@ -13,5 +13,5 @@ ConfigFile=theme.conf
 TranslationsDirectory=translations
 Theme-Id=simplicity
 Theme-API=2.0
-Website=https://github.com/gabretana/sddm-theme-simplicity
+Website=https://gitlab.com/isseigx/simplicity-sddm-theme
 
