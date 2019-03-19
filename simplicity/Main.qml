@@ -68,28 +68,12 @@ Rectangle {
                     spacing: 20
                     
                     Row {
-                   
-                        TextBox {
+                        Simple.SimpleUserComboBox {
                             id: user_entry
-                            radius: 3
-                            width: 250
                             anchors.verticalCenter: parent.verticalCenter
-                            text: userModel.lastUser
-                            font.pixelSize: 16
+                            width: 250
                             color: Qt.rgba(0, 0, 0, 0.2)
-                            borderColor: "transparent"
-                            focusColor: Qt.rgba(0, 0, 0, 0.25)
-                            hoverColor: Qt.rgba(0, 0, 0, 0.2)
-                            textColor: "white"
-                            
-                            KeyNavigation.backtab: session; KeyNavigation.tab: pw_entry
-                        }
-                        /*Simple.SimpleComboBox {
-                            id: user_entry
-                            anchors.verticalCenter: parent.verticalCenter
-                            width: 250
-                            color: "transparent"
-                            dropDownColor: "#212121"
+                            dropDownColor: Qt.rgba(0, 0, 0, 0.2)
                             borderColor: "transparent"
                             textColor: "white"
                             arrowIcon: "images/arrow-down.png"
@@ -99,7 +83,7 @@ Rectangle {
 
                             font.pixelSize: 16
                             KeyNavigation.backtab: session; KeyNavigation.tab: pw_entry
-                        }*/
+                        }
                    
                     }
                     
@@ -121,7 +105,7 @@ Rectangle {
 
                             Keys.onPressed: {
                                 if (event.key === Qt.Key_Return || event.key === Qt.Key_Enter) {
-                                    sddm.login(user_entry.text, pw_entry.text, session.index)
+                                    sddm.login(user_entry.currentText, pw_entry.text, session.index)
                                     event.accepted = true
                                 }
                             }
@@ -149,7 +133,7 @@ Rectangle {
                             pressedColor: Qt.rgba(0, 0, 0, 0.25)
                             font.pixelSize: 15
                             font.bold: false
-                            onClicked: sddm.login(user_entry.text, pw_entry.text, session.index)
+                            onClicked: sddm.login(user_entry.currentText, pw_entry.text, session.index)
                             KeyNavigation.backtab: pw_entry; KeyNavigation.tab: restart
                         }
                     }
@@ -260,10 +244,10 @@ Rectangle {
     }
     
     Component.onCompleted: {
-        if (user_entry.text === "")
+        /*if (user_entry.text === "")
             user_entry.focus = true
         else
-            pw_entry.focus = true
-        //pw_entry.focus = true
+            pw_entry.focus = true*/
+        pw_entry.focus = true
     }
 }
