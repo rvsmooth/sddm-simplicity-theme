@@ -59,9 +59,7 @@ Rectangle {
                 id: entries
                 width: parent.width
                 height: 200
-                //color: Qt.rgba(33/255, 33/255, 33/255, 0.8)
                 color: "transparent"
-                radius: 4
                 
                 Column {
                     anchors.centerIn: parent
@@ -90,7 +88,6 @@ Rectangle {
                     Row {
                         PasswordBox {
                             id: pw_entry
-                            radius: 3
                             width: 250
                             anchors.verticalCenter: parent.verticalCenter
                             font.pixelSize: 16
@@ -125,7 +122,6 @@ Rectangle {
                         anchors.horizontalCenter: parent.horizontalCenter
                         Button {
                             id: loginButton
-                            radius: 3
                             text: textConstants.login
                             width: 150
                             color: Qt.rgba(0, 0, 0, 0.2)
@@ -164,7 +160,6 @@ Rectangle {
             activeColor: Qt.rgba(0, 0, 0, 0.2)
             font.pixelSize: 15
             font.bold: false
-            radius: 4
             onClicked: sddm.reboot()
             KeyNavigation.backtab: loginButton; KeyNavigation.tab: shutdown
         }
@@ -179,7 +174,6 @@ Rectangle {
             activeColor: Qt.rgba(0, 0, 0, 0.2)
             font.pixelSize: 15
             font.bold: false
-            radius: 4
             onClicked: sddm.powerOff()
             KeyNavigation.backtab: restart; KeyNavigation.tab: session
         }
@@ -228,7 +222,6 @@ Rectangle {
             anchors.verticalCenter: parent.verticalCenter
             width: 60
             height: session.height
-            radius: 4
             
             Text {
                 id: timelb
