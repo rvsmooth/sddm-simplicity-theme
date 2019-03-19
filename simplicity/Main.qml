@@ -38,106 +38,88 @@ Rectangle {
         anchors.fill: parent
         color: "transparent"
         
-        /*Simple.SimpleClock {
-            id: time_label
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.top: parent.top
-            color: "black"
-            timeFont.family: "Noto Sans"
-            dateFont.family: "Noto Sans"
-            timeFontSize: 16
-            dateFontSize: 12
-        }*/
-        
         Rectangle {
             width: 400
             height: 250
             color: "transparent"
             anchors.centerIn: parent
             
-            Rectangle {
-                id: entries
-                width: parent.width
-                height: 200
-                color: "transparent"
-                
-                Column {
-                    anchors.centerIn: parent
-                    spacing: 20
-                    
-                    Row {
-                        Simple.SimpleUserComboBox {
-                            id: user_entry
-                            anchors.verticalCenter: parent.verticalCenter
-                            width: 250
-                            color: Qt.rgba(0, 0, 0, 0.2)
-                            dropDownColor: Qt.rgba(0, 0, 0, 0.2)
-                            borderColor: "transparent"
-                            textColor: "white"
-                            arrowIcon: "images/arrow-down.png"
-                            arrowColor: "transparent"
-                            model: userModel
-                            index: userModel.lastIndex
-
-                            font.pixelSize: 16
-                            KeyNavigation.backtab: session; KeyNavigation.tab: pw_entry
-                        }
-                   
-                    }
-                    
-                    Row {
-                        PasswordBox {
-                            id: pw_entry
-                            width: 250
-                            anchors.verticalCenter: parent.verticalCenter
-                            font.pixelSize: 16
-                            color: Qt.rgba(0, 0, 0, 0.2)
-                            borderColor: "transparent"
-                            focusColor: Qt.rgba(0, 0, 0, 0.25)
-                            hoverColor: Qt.rgba(0, 0, 0, 0.2)
-                            textColor: "white"
-                            focus: true
-                            
-                            KeyNavigation.backtab: user_entry; KeyNavigation.tab: loginButton
-
-                            Keys.onPressed: {
-                                if (event.key === Qt.Key_Return || event.key === Qt.Key_Enter) {
-                                    sddm.login(user_entry.currentText, pw_entry.text, session.index)
-                                    event.accepted = true
-                                }
-                            }
-                        }
-                    }
-                    
-                    Row {
-                        Text {
-                            id: errorMessage
-                            anchors.verticalCenter: parent.verticalCenter
-                            text: ""
-                            font.pixelSize: 15
-                        }
-                    }
-                    
-                    Row {
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        Button {
-                            id: loginButton
-                            text: textConstants.login
-                            width: 150
-                            color: Qt.rgba(0, 0, 0, 0.2)
-                            activeColor: Qt.rgba(0, 0, 0, 0.2)
-                            pressedColor: Qt.rgba(0, 0, 0, 0.25)
-                            font.pixelSize: 15
-                            font.bold: false
-                            onClicked: sddm.login(user_entry.currentText, pw_entry.text, session.index)
-                            KeyNavigation.backtab: pw_entry; KeyNavigation.tab: restart
-                        }
-                    }
-                    
-                }
-                
+            Image {
+                id: user_icon
+                anchors.horizontalCenter: parent.horizontalCenter
+                width: 80; height: 80
+                source: user_entry.currentIcon
+                smooth: true
+                fillMode: Image.PreserveAspectFit
             }
             
+            Simple.SimpleUserComboBox {
+                id: user_entry
+                anchors.horizontalCenter: user_icon.horizontalCenter
+                anchors.topMargin: 10
+                anchors.top: user_icon.bottom
+                width: 250
+                color: Qt.rgba(0, 0, 0, 0.2)
+                dropDownColor: Qt.rgba(0, 0, 0, 0.2)
+                borderColor: "transparent"
+                textColor: "white"
+                arrowIcon: "images/arrow-down.png"
+                arrowColor: "transparent"
+                model: userModel
+                index: userModel.lastIndex
+
+                font.pixelSize: 16
+                KeyNavigation.backtab: session; KeyNavigation.tab: pw_entry
+            }
+            
+            PasswordBox {
+                id: pw_entry
+                width: 250
+                anchors.horizontalCenter: user_entry.horizontalCenter
+                anchors.top: user_entry.bottom
+                anchors.topMargin: 10
+                font.pixelSize: 16
+                color: Qt.rgba(0, 0, 0, 0.2)
+                borderColor: "transparent"
+                focusColor: Qt.rgba(0, 0, 0, 0.25)
+                hoverColor: Qt.rgba(0, 0, 0, 0.2)
+                textColor: "white"
+                focus: true
+                KeyNavigation.backtab: user_entry; KeyNavigation.tab: loginButton
+
+                Keys.onPressed: {
+                    if (event.key === Qt.Key_Return || event.key === Qt.Key_Enter) {
+                        sddm.login(user_entry.currentText, pw_entry.text, session.index)
+                        event.accepted = true
+                    }
+                }
+            }
+            Button {
+                id: loginButton
+                text: textConstants.login
+                anchors.horizontalCenter: pw_entry.horizontalCenter
+                anchors.top: pw_entry.bottom
+                anchors.topMargin: 10
+                width: 150
+                color: Qt.rgba(0, 0, 0, 0.2)
+                activeColor: Qt.rgba(0, 0, 0, 0.2)
+                pressedColor: Qt.rgba(0, 0, 0, 0.25)
+                font.pixelSize: 15
+                font.bold: false
+                onClicked: sddm.login(user_entry.currentText, pw_entry.text, session.index)
+                KeyNavigation.backtab: pw_entry; KeyNavigation.tab: restart
+            }
+            
+            Text {
+                id: errorMessage
+                anchors.horizontalCenter: loginButton.horizontalCenter
+                anchors.top: loginButton.bottom
+                anchors.topMargin: 10
+                text: ""
+                font.pixelSize: 15
+                font.bold: true
+                font.capitalization: Font.AllUppercase
+            }  
         }
         
     }
