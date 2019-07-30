@@ -14,12 +14,15 @@ Rectangle {
     
     Connections {
         target: sddm
+        
         onLoginSucceeded: {}
+        
         onLoginFailed: {
             pw_entry.text = ""
             pw_entry.focus = true
-            errorMessage.color = "red"
-            errorMessage.text = textConstants.loginFailed
+            
+            timeContainer.color = "#F44336"
+            errorMsgContainer.width = errorMessage.width + 10
         }
     }
     
@@ -39,6 +42,7 @@ Rectangle {
         anchors.verticalCenter: parent.verticalCenter
         spacing: 10
 
+        
         Simple.SimpleUserComboBox {
             id: user_entry
             width: 250
@@ -90,13 +94,6 @@ Rectangle {
             KeyNavigation.tab: suspend
         }
 
-        Text {
-            id: errorMessage
-            text: ""
-            font.pointSize: 15
-            font.bold: true
-            font.capitalization: Font.AllUppercase
-        }
     }
 
     Rectangle {
@@ -212,6 +209,7 @@ Rectangle {
     }
 
     Rectangle {
+        id: timeContainer
         color: Qt.rgba(0, 0, 0, 0.2)
         anchors.top: parent.top
         anchors.right: parent.right
@@ -220,6 +218,10 @@ Rectangle {
         width: timelb.width + 7
         height: session.height
 
+        Behavior on color {
+            ColorAnimation { duration: 300 }
+        }
+
         Text {
             id: timelb
             anchors.centerIn: parent
@@ -227,6 +229,38 @@ Rectangle {
             color: "white"
             font.pointSize: 14
             horizontalAlignment: Text.AlignHCenter
+        }
+    }
+
+    Rectangle {
+        id: errorMsgContainer
+        anchors.right: timeContainer.left
+        anchors.top: parent.top
+        anchors.topMargin: 10
+        
+        width: 0
+        height: timeContainer.height
+        color: "#F44336"
+        clip: true
+
+        Behavior on width {
+            NumberAnimation {
+                duration: 300
+                easing.type: Easing.OutCirc
+            }
+        }
+
+        Text {
+            id: errorMessage
+            anchors.centerIn: parent
+            text: textConstants.loginFailed
+            width: 240
+            color: "white"
+            font.pointSize: 12
+            font.bold: true
+            font.capitalization: Font.AllUppercase
+            elide: Qt.locale().textDirection == Qt.RightToLeft ? Text.ElideLeft : Text.ElideRight
+            horizontalAlignment: Qt.AlignHCenter
         }
     }
 
