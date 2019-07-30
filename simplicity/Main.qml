@@ -33,8 +33,30 @@ Rectangle {
             }
         }
     }
+
+    Row {
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.verticalCenter: parent.verticalCenter
+        spacing: 10
+
+        Simple.SimpleUserComboBox {
+            id: user_entry
+            width: 250
+            color: Qt.rgba(0, 0, 0, 0.2)
+            dropDownColor: Qt.rgba(0, 0, 0, 0.2)
+            borderColor: "transparent"
+            textColor: "white"
+            arrowIcon: "images/arrow-down.png"
+            arrowColor: "transparent"
+            model: userModel
+            index: userModel.lastIndex
+            font.pointSize: 14
+            KeyNavigation.backtab: session
+            KeyNavigation.tab: pw_entry
+        }
+    }
     
-    Rectangle {
+/*    Rectangle {
         anchors.fill: parent
         color: "transparent"
         
@@ -122,7 +144,7 @@ Rectangle {
             }  
         }
         
-    }
+    } */
     
     Rectangle {
         width: parent.width - 10
