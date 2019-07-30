@@ -99,18 +99,15 @@ Rectangle {
         }
     }
       
-    Rectangle {
-        width: parent.width - 10
-        height: 40
-        color: "transparent"
+    Row {
         anchors.bottom: parent.bottom
-        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.right: parent.right
+        anchors.bottomMargin: 10
+        anchors.rightMargin: 10
+        spacing: 10
         
         Button {
             id: restart
-            anchors.verticalCenter: parent.verticalCenter
-            anchors.right: shutdown.left
-            anchors.rightMargin: 10
             text: textConstants.reboot
             color: Qt.rgba(0, 0, 0, 0.2)
             pressedColor: Qt.rgba(0, 0, 0, 0.25)
@@ -123,8 +120,6 @@ Rectangle {
         
         Button {
             id: shutdown
-            anchors.verticalCenter: parent.verticalCenter
-            anchors.right: parent.right
             text: textConstants.shutdown
             color: Qt.rgba(0, 0, 0, 0.2)
             pressedColor: Qt.rgba(0, 0, 0, 0.25)
