@@ -123,9 +123,9 @@ Rectangle {
             id: restart
             text: textConstants.reboot
             color: Qt.rgba(0, 0, 0, 0.2)
-            pressedColor: Qt.rgba(0, 0, 0, 0.25)
-            activeColor: Qt.rgba(0, 0, 0, 0.2)
-            font.pixelSize: 15
+            pressedColor: Qt.rgba(0, 0, 0, 0.3)
+            activeColor: Qt.rgba(0, 0, 0, 0.3)
+            font.pointSize: 11
             font.bold: false
             onClicked: sddm.reboot()
             KeyNavigation.backtab: suspend; KeyNavigation.tab: shutdown
@@ -135,9 +135,9 @@ Rectangle {
             id: shutdown
             text: textConstants.shutdown
             color: Qt.rgba(0, 0, 0, 0.2)
-            pressedColor: Qt.rgba(0, 0, 0, 0.25)
-            activeColor: Qt.rgba(0, 0, 0, 0.2)
-            font.pixelSize: 15
+            pressedColor: Qt.rgba(0, 0, 0, 0.3)
+            activeColor: Qt.rgba(0, 0, 0, 0.3)
+            font.pointSize: 11
             font.bold: false
             onClicked: sddm.powerOff()
             KeyNavigation.backtab: restart; KeyNavigation.tab: session
