@@ -136,6 +136,26 @@ Rectangle {
         }
         
     }
+
+    Simple.SimpleComboBox {
+        id: session
+        anchors.left: parent.left
+        anchors.leftMargin: 10
+        anchors.top: parent.top
+        anchors.topMargin: 10
+        width: 200
+        color: Qt.rgba(0, 0, 0, 0.2)
+        dropDownColor: Qt.rgba(0, 0, 0, 0.2)
+        borderColor: "transparent"
+        textColor: "White"
+        font.pointSize: 14
+        arrowIcon: "images/arrow-down.png"
+        arrowColor: "transparent"
+        model: sessionModel
+        index: sessionModel.lastIndex
+        KeyNavigation.backtab: shutdown
+        KeyNavigation.tab: user_entry
+    }
     
     Rectangle {
         id: dateClock
@@ -143,26 +163,8 @@ Rectangle {
         height: 40
         color: "transparent"
         anchors.top: parent.top;
-        anchors.horizontalCenter: parent.horizontalCenter
-        
-        Simple.SimpleComboBox {
-            id: session
-            anchors.left: parent.left
-            anchors.verticalCenter: parent.verticalCenter
-            width: 185
-            color: Qt.rgba(0, 0, 0, 0.2)
-            dropDownColor: Qt.rgba(0, 0, 0, 0.2)
-            borderColor: "transparent"
-            textColor: "white"
-            arrowIcon: "images/arrow-down.png"
-            arrowColor: "transparent"
-            model: sessionModel
-            index: sessionModel.lastIndex
-
-            font.pixelSize: 16
-            KeyNavigation.backtab: shutdown; KeyNavigation.tab: user_entry
-        }
-        
+        anchors.horizontalCenter: parent.horizontalCenter        
+     
         Timer {
             id: timetr
             interval: 100
