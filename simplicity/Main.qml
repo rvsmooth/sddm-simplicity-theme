@@ -87,7 +87,7 @@ Rectangle {
             font.bold: false
             onClicked: sddm.login(user_entry.currentText, pw_entry.text, session.index)
             KeyNavigation.backtab: pw_entry
-            KeyNavigation.tab: restart
+            KeyNavigation.tab: suspend
         }
 
         Text {
@@ -105,6 +105,19 @@ Rectangle {
         anchors.bottomMargin: 10
         anchors.rightMargin: 10
         spacing: 10
+
+        Button {
+            id: suspend
+            text: textConstants.suspend
+            color: Qt.rgba(0, 0, 0, 0.2)
+            pressedColor: Qt.rgba(0, 0, 0, 0.3)
+            activeColor: Qt.rgba(0, 0, 0, 0.3)
+            font.pointSize: 11
+            font.bold: false
+            onClicked: sddm.suspend()
+            KeyNavigation.backtab: loginButton
+            KeyNavigation.tab: restart
+        }
         
         Button {
             id: restart
@@ -115,7 +128,7 @@ Rectangle {
             font.pixelSize: 15
             font.bold: false
             onClicked: sddm.reboot()
-            KeyNavigation.backtab: loginButton; KeyNavigation.tab: shutdown
+            KeyNavigation.backtab: suspend; KeyNavigation.tab: shutdown
         }
         
         Button {
