@@ -156,6 +156,25 @@ Rectangle {
         KeyNavigation.backtab: shutdown
         KeyNavigation.tab: user_entry
     }
+
+    Rectangle {
+        color: Qt.rgba(0, 0, 0, 0.2)
+        anchors.top: parent.top
+        anchors.right: parent.right
+        anchors.topMargin: 10
+        anchors.rightMargin: 10
+        width: timelb.width + 7
+        height: session.height
+
+        Text {
+            id: timelb
+            anchors.centerIn: parent
+            text: Qt.formatDateTime(new Date(), "HH:mm")
+            color: "white"
+            font.pointSize: 14
+            horizontalAlignment: Text.AlignHCenter
+        }
+    }
     
     Rectangle {
         id: dateClock
@@ -173,25 +192,7 @@ Rectangle {
             onTriggered: {
                 timelb.text = Qt.formatDateTime(new Date(), "HH:mm");
             }  
-        }
-        
-        Rectangle {
-            color: Qt.rgba(0, 0, 0, 0.2)
-            anchors.right: parent.right
-            anchors.verticalCenter: parent.verticalCenter
-            width: 60
-            height: session.height
-            
-            Text {
-                id: timelb
-                anchors.horizontalCenter: parent.horizontalCenter
-                anchors.verticalCenter: parent.verticalCenter
-                text: Qt.formatDateTime(new Date(), "HH:mm")
-                color: "white"
-                font.pixelSize: 18
-            }
-        }
-        
+        }      
         
     }
     
