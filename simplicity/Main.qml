@@ -175,25 +175,14 @@ Rectangle {
             horizontalAlignment: Text.AlignHCenter
         }
     }
-    
-    Rectangle {
-        id: dateClock
-        width: parent.width - 10
-        height: 40
-        color: "transparent"
-        anchors.top: parent.top;
-        anchors.horizontalCenter: parent.horizontalCenter        
-     
-        Timer {
-            id: timetr
-            interval: 100
-            running: true
-            repeat: true
-            onTriggered: {
-                timelb.text = Qt.formatDateTime(new Date(), "HH:mm");
-            }  
-        }      
-        
+
+    Timer {
+        id: timetr
+        interval: 500
+        repeat: true
+        onTriggered: {
+            timelb.text = Qt.formatDateTime(new Date(), "HH:mm")
+        }
     }
     
     Component.onCompleted: {
@@ -201,6 +190,7 @@ Rectangle {
             user_entry.focus = true
         else
             pw_entry.focus = true*/
+        timetr.start()
         pw_entry.focus = true
     }
 }
