@@ -101,24 +101,46 @@ Rectangle {
 
     Rectangle {
         anchors.bottom: parent.bottom
-        anchors.right: parent.right
-        anchors.rightMargin: 10
+        anchors.left: parent.left
+        anchors.leftMargin: 10
         anchors.bottomMargin: 10
         width: powerPositioner.width
         height: powerPositioner.height
         color: Qt.rgba(0, 0, 0, 0.2)
+
+        Behavior on width {
+            NumberAnimation {
+                duration: 300
+                easing.type: Easing.OutCirc
+            }
+        }
         
         Row {
             id: powerPositioner
-            anchors.right: parent.right
+            anchors.left: parent.left
+            anchors.top: parent.top
             spacing: 10
 
+            move: Transition {
+                NumberAnimation {
+                    properties: "x,y"
+                    duration: 300
+                    easing.type: Easing.OutCirc
+                }
+            }
+
             Image {
-                id: arrowImage
-                source: suspend.visible ? "images/arrow_right.svg" : "images/arrow_left.svg"
-                fillMode: Image.PreserveAspectFit
+                id: powerImage
+                source: "images/power.svg"
                 width: parent.height
                 height: parent.height
+                fillMode: Image.PreserveAspectFit
+
+                MouseArea {
+                    anchors.fill: parent
+                    cursorShape: Qt.PointingHandCursor
+                    onClicked: togglePowerButtons()
+                }
             }
 
             Button {
@@ -159,17 +181,11 @@ Rectangle {
             }
 
             Image {
-                id: powerImage
-                source: "images/power.svg"
+                id: arrowImage
+                source: suspend.visible ? "images/arrow_left.svg" : "images/arrow_right.svg"
+                fillMode: Image.PreserveAspectFit
                 width: parent.height
                 height: parent.height
-                fillMode: Image.PreserveAspectFit
-
-                MouseArea {
-                    anchors.fill: parent
-                    cursorShape: Qt.PointingHandCursor
-                    onClicked: togglePowerButtons()
-                }
             }
         }
 
@@ -222,6 +238,12 @@ Rectangle {
             timelb.text = Qt.formatDateTime(new Date(), "HH:mm")
         }
     }
+
+    Timer {
+        id: toggleTimer
+        interval: 5000
+        onTriggered: togglePowerButtons()
+    }
     
     Component.onCompleted: {
         /*if (user_entry.text === "")
@@ -229,12 +251,16 @@ Rectangle {
         else
             pw_entry.focus = true*/
         timetr.start()
+        toggleTimer.start()
         pw_entry.focus = true
     }
 
     function togglePowerButtons() {
-        shutdown.visible = !shutdown.visible
-        restart.visible = !restart.visible
         suspend.visible = !suspend.visible
+        restart.visible = !restart.visible
+        shutdown.visible = !shutdown.visible
+
+        if (toggleTimer.running)
+            toggleTimer.stop()
     }
 }
