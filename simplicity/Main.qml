@@ -46,7 +46,7 @@ Rectangle {
             dropDownColor: Qt.rgba(0, 0, 0, 0.2)
             borderColor: "transparent"
             textColor: "white"
-            arrowIcon: "images/arrow-down.png"
+            arrowIcon: "images/arrow_down.svg"
             arrowColor: "transparent"
             model: userModel
             index: userModel.lastIndex
@@ -157,7 +157,7 @@ Rectangle {
         borderColor: "transparent"
         textColor: "White"
         font.pointSize: 14
-        arrowIcon: "images/arrow-down.png"
+        arrowIcon: "images/arrow_down.svg"
         arrowColor: "transparent"
         model: sessionModel
         index: sessionModel.lastIndex
@@ -201,4 +201,5 @@ Rectangle {
         timetr.start()
         pw_entry.focus = true
     }
+    
 }
