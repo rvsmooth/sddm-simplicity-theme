@@ -96,96 +96,48 @@ Rectangle {
 
     }
 
-    Rectangle {
-        anchors.bottom: parent.bottom
-        anchors.left: parent.left
-        anchors.leftMargin: 10
-        anchors.bottomMargin: 10
-        width: powerPositioner.width
-        height: powerPositioner.height
-        color: Qt.rgba(0, 0, 0, 0.2)
-
-        Behavior on width {
-            NumberAnimation {
-                duration: 300
-                easing.type: Easing.OutCirc
-            }
+    Row {
+        anchors {
+            bottom: parent.bottom
+            horizontalCenter: parent.horizontalCenter
         }
         
-        Row {
-            id: powerPositioner
-            anchors.left: parent.left
-            anchors.top: parent.top
-            spacing: 10
-
-            move: Transition {
-                NumberAnimation {
-                    properties: "x,y"
-                    duration: 300
-                    easing.type: Easing.OutCirc
-                }
-            }
-
-            Image {
-                id: powerImage
-                source: "images/power.svg"
-                width: parent.height
-                height: parent.height
-                fillMode: Image.PreserveAspectFit
-
-                MouseArea {
-                    anchors.fill: parent
-                    cursorShape: Qt.PointingHandCursor
-                    onClicked: togglePowerButtons()
-                }
-            }
-
-            Button {
-                id: suspend
-                text: textConstants.suspend
-                color: "transparent"
-                pressedColor: Qt.rgba(0, 0, 0, 0.3)
-                activeColor: Qt.rgba(0, 0, 0, 0.3)
-                font.pointSize: 11
-                font.bold: false
-                onClicked: sddm.suspend()
-                KeyNavigation.backtab: loginButton
-                KeyNavigation.tab: restart
-            }
-        
-            Button {
-                id: restart
-                text: textConstants.reboot
-                color: "transparent"
-                pressedColor: Qt.rgba(0, 0, 0, 0.3)
-                activeColor: Qt.rgba(0, 0, 0, 0.3)
-                font.pointSize: 11
-                font.bold: false
-                onClicked: sddm.reboot()
-                KeyNavigation.backtab: suspend; KeyNavigation.tab: shutdown
-            }
-        
-            Button {
-                id: shutdown
-                text: textConstants.shutdown
-                color: "transparent"
-                pressedColor: Qt.rgba(0, 0, 0, 0.3)
-                activeColor: Qt.rgba(0, 0, 0, 0.3)
-                font.pointSize: 11
-                font.bold: false
-                onClicked: sddm.powerOff()
-                KeyNavigation.backtab: restart; KeyNavigation.tab: session
-            }
-
-            Image {
-                id: arrowImage
-                source: suspend.visible ? "images/arrow_left.svg" : "images/arrow_right.svg"
-                fillMode: Image.PreserveAspectFit
-                width: parent.height
-                height: parent.height
-            }
+        Button {
+            id: suspend
+            text: textConstants.suspend
+            color: Qt.rgba(0, 0, 0, 0.2)
+            pressedColor: Qt.rgba(0, 0, 0, 0.3)
+            activeColor: Qt.rgba(0, 0, 0, 0.3)
+            font.pointSize: 11
+            font.bold: false
+            onClicked: sddm.suspend()
+            KeyNavigation.backtab: loginButton
+            KeyNavigation.tab: restart
         }
-
+        
+        Button {
+            id: restart
+            text: textConstants.reboot
+            color: Qt.rgba(0, 0, 0, 0.2)
+            pressedColor: Qt.rgba(0, 0, 0, 0.3)
+            activeColor: Qt.rgba(0, 0, 0, 0.3)
+            font.pointSize: 11
+            font.bold: false
+            onClicked: sddm.reboot()
+            KeyNavigation.backtab: suspend; KeyNavigation.tab: shutdown
+        }
+        
+        Button {
+            id: shutdown
+            text: textConstants.shutdown
+            color: Qt.rgba(0, 0, 0, 0.2)
+            pressedColor: Qt.rgba(0, 0, 0, 0.3)
+            activeColor: Qt.rgba(0, 0, 0, 0.3)
+            font.pointSize: 11
+            font.bold: false
+            onClicked: sddm.powerOff()
+            KeyNavigation.backtab: restart; KeyNavigation.tab: session
+        }
     }
 
     Simple.SimpleComboBox {
@@ -272,12 +224,6 @@ Rectangle {
             timelb.text = Qt.formatDateTime(new Date(), "HH:mm")
         }
     }
-
-    Timer {
-        id: toggleTimer
-        interval: 5000
-        onTriggered: togglePowerButtons()
-    }
     
     Component.onCompleted: {
         /*if (user_entry.text === "")
@@ -285,7 +231,6 @@ Rectangle {
         else
             pw_entry.focus = true*/
         timetr.start()
-        toggleTimer.start()
         pw_entry.focus = true
     }
 
