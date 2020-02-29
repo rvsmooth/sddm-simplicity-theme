@@ -54,7 +54,7 @@ Rectangle {
             arrowColor: "transparent"
             model: userModel
             index: userModel.lastIndex
-            font.pointSize: 14
+            font.pointSize: 11
             KeyNavigation.backtab: session
             KeyNavigation.tab: pw_entry
         }
@@ -67,7 +67,7 @@ Rectangle {
             focusColor: Qt.rgba(0, 0, 0, 0.3)
             hoverColor: Qt.rgba(0, 0, 0, 0.3)
             textColor: "white"
-            font.pointSize: 14
+            font.pointSize: 11
             focus: true
             KeyNavigation.backtab: user_entry
             KeyNavigation.tab: loginButton
@@ -87,7 +87,7 @@ Rectangle {
             color: Qt.rgba(0, 0, 0, 0.2)
             activeColor: Qt.rgba(0, 0, 0, 0.3)
             pressedColor: Qt.rgba(0, 0, 0, 0.3)
-            font.pointSize: 14
+            font.pointSize: 11
             font.bold: false
             onClicked: sddm.login(user_entry.currentText, pw_entry.text, session.index)
             KeyNavigation.backtab: pw_entry
@@ -151,7 +151,7 @@ Rectangle {
         dropDownColor: Qt.rgba(0, 0, 0, 0.2)
         borderColor: "transparent"
         textColor: "White"
-        font.pointSize: 14
+        font.pointSize: 11
         arrowIcon: "images/arrow_down.svg"
         arrowColor: "transparent"
         model: sessionModel
@@ -179,7 +179,7 @@ Rectangle {
             anchors.centerIn: parent
             text: Qt.formatDateTime(new Date(), "HH:mm")
             color: "white"
-            font.pointSize: 14
+            font.pointSize: 11
             horizontalAlignment: Text.AlignHCenter
         }
     }
@@ -208,7 +208,7 @@ Rectangle {
             text: textConstants.loginFailed
             width: 240
             color: "white"
-            font.pointSize: 12
+            font.pointSize: 11
             font.bold: true
             font.capitalization: Font.AllUppercase
             elide: Qt.locale().textDirection == Qt.RightToLeft ? Text.ElideLeft : Text.ElideRight
