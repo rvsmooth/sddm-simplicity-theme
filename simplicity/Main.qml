@@ -93,6 +93,26 @@ Rectangle {
             KeyNavigation.backtab: pw_entry
             KeyNavigation.tab: suspend
         }
+        
+        Rectangle {
+            width: 250
+            height: loginButton.height
+            color: "#F44336"
+            clip: true
+            
+            Text {
+                id: errorMessage
+                anchors.centerIn: parent
+                text: textConstants.loginFailed
+                width: 240
+                color: "white"
+                font.pointSize: 11
+                font.bold: true
+                font.capitalization: Font.AllUppercase
+                elide: Qt.locale().textDirection == Qt.RightToLeft ? Text.ElideLeft : Text.ElideRight
+                horizontalAlignment: Qt.AlignHCenter
+            }
+        }
 
     }
 
