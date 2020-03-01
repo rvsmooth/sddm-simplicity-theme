@@ -21,8 +21,7 @@ Rectangle {
             pw_entry.text = ""
             pw_entry.focus = true
             
-            timeContainer.color = "#F44336"
-            errorMsgContainer.width = errorMessage.width + 10
+            errorMsgContainer.visible = true
         }
     }
     
@@ -95,13 +94,14 @@ Rectangle {
         }
         
         Rectangle {
+            id: errorMsgContainer
             width: 250
             height: loginButton.height
             color: "#F44336"
             clip: true
+            visible: false
             
             Text {
-                id: errorMessage
                 anchors.centerIn: parent
                 text: textConstants.loginFailed
                 width: 240
@@ -201,38 +201,6 @@ Rectangle {
             color: "white"
             font.pointSize: 11
             horizontalAlignment: Text.AlignHCenter
-        }
-    }
-
-    Rectangle {
-        id: errorMsgContainer
-        anchors.right: timeContainer.left
-        anchors.top: parent.top
-        anchors.topMargin: 10
-        
-        width: 0
-        height: timeContainer.height
-        color: "#F44336"
-        clip: true
-
-        Behavior on width {
-            NumberAnimation {
-                duration: 300
-                easing.type: Easing.OutCirc
-            }
-        }
-
-        Text {
-            id: errorMessage
-            anchors.centerIn: parent
-            text: textConstants.loginFailed
-            width: 240
-            color: "white"
-            font.pointSize: 11
-            font.bold: true
-            font.capitalization: Font.AllUppercase
-            elide: Qt.locale().textDirection == Qt.RightToLeft ? Text.ElideLeft : Text.ElideRight
-            horizontalAlignment: Qt.AlignHCenter
         }
     }
 
