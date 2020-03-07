@@ -191,10 +191,6 @@ Rectangle {
         width: timelb.width + 7
         height: session.height
 
-        Behavior on color {
-            ColorAnimation { duration: 300 }
-        }
-
         Text {
             id: timelb
             anchors.centerIn: parent
