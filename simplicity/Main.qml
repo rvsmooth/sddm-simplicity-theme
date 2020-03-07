@@ -119,6 +119,7 @@ Rectangle {
     Row {
         anchors {
             bottom: parent.bottom
+            bottomMargin: 10
             horizontalCenter: parent.horizontalCenter
         }
         
