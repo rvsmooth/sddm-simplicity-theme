@@ -218,13 +218,4 @@ Rectangle {
         timetr.start()
         pw_entry.focus = true
     }
-
-    function togglePowerButtons() {
-        suspend.visible = !suspend.visible
-        restart.visible = !restart.visible
-        shutdown.visible = !shutdown.visible
-
-        if (toggleTimer.running)
-            toggleTimer.stop()
-    }
 }
