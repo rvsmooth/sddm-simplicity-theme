@@ -3,6 +3,9 @@ import SddmComponents 2.0
 import "SimpleControls" as Simple
 
 Rectangle {
+
+    readonly property color backgroundColor: Qt.rgba(0, 0, 0, 0.4)
+    readonly property color hoverBackgroundColor: Qt.rgba(0, 0, 0, 0.6)
     
     width: 640
     height: 480
@@ -45,8 +48,8 @@ Rectangle {
         Simple.SimpleUserComboBox {
             id: user_entry
             width: 250
-            color: Qt.rgba(0, 0, 0, 0.2)
-            dropDownColor: Qt.rgba(0, 0, 0, 0.2)
+            color: backgroundColor
+            dropDownColor: backgroundColor
             borderColor: "transparent"
             textColor: "white"
             arrowIcon: "images/arrow_down.svg"
@@ -61,10 +64,10 @@ Rectangle {
         PasswordBox {
             id: pw_entry
             width: 250
-            color: Qt.rgba(0, 0, 0, 0.2)
+            color: backgroundColor
             borderColor: "transparent"
-            focusColor: Qt.rgba(0, 0, 0, 0.3)
-            hoverColor: Qt.rgba(0, 0, 0, 0.3)
+            focusColor: hoverBackgroundColor
+            hoverColor: hoverBackgroundColor
             textColor: "white"
             font.pointSize: 11
             focus: true
@@ -83,9 +86,9 @@ Rectangle {
             id: loginButton
             text: textConstants.login
             width: 250
-            color: Qt.rgba(0, 0, 0, 0.2)
-            activeColor: Qt.rgba(0, 0, 0, 0.3)
-            pressedColor: Qt.rgba(0, 0, 0, 0.3)
+            color: backgroundColor
+            activeColor: hoverBackgroundColor
+            pressedColor: hoverBackgroundColor
             font.pointSize: 11
             font.bold: false
             onClicked: sddm.login(user_entry.currentText, pw_entry.text, session.index)
@@ -126,9 +129,9 @@ Rectangle {
         Button {
             id: suspend
             text: textConstants.suspend
-            color: Qt.rgba(0, 0, 0, 0.2)
-            pressedColor: Qt.rgba(0, 0, 0, 0.3)
-            activeColor: Qt.rgba(0, 0, 0, 0.3)
+            color: backgroundColor
+            pressedColor: hoverBackgroundColor
+            activeColor: hoverBackgroundColor
             font.pointSize: 11
             font.bold: false
             onClicked: sddm.suspend()
@@ -139,9 +142,9 @@ Rectangle {
         Button {
             id: restart
             text: textConstants.reboot
-            color: Qt.rgba(0, 0, 0, 0.2)
-            pressedColor: Qt.rgba(0, 0, 0, 0.3)
-            activeColor: Qt.rgba(0, 0, 0, 0.3)
+            color: backgroundColor
+            pressedColor: hoverBackgroundColor
+            activeColor: hoverBackgroundColor
             font.pointSize: 11
             font.bold: false
             onClicked: sddm.reboot()
@@ -151,9 +154,9 @@ Rectangle {
         Button {
             id: shutdown
             text: textConstants.shutdown
-            color: Qt.rgba(0, 0, 0, 0.2)
-            pressedColor: Qt.rgba(0, 0, 0, 0.3)
-            activeColor: Qt.rgba(0, 0, 0, 0.3)
+            color: backgroundColor
+            pressedColor: hoverBackgroundColor
+            activeColor: hoverBackgroundColor
             font.pointSize: 11
             font.bold: false
             onClicked: sddm.powerOff()
@@ -168,8 +171,8 @@ Rectangle {
         anchors.top: parent.top
         anchors.topMargin: 10
         width: 200
-        color: Qt.rgba(0, 0, 0, 0.2)
-        dropDownColor: Qt.rgba(0, 0, 0, 0.2)
+        color: backgroundColor
+        dropDownColor: backgroundColor
         borderColor: "transparent"
         textColor: "White"
         font.pointSize: 11
@@ -184,7 +187,7 @@ Rectangle {
 
     Rectangle {
         id: timeContainer
-        color: Qt.rgba(0, 0, 0, 0.2)
+        color: backgroundColor
         anchors.top: parent.top
         anchors.right: parent.right
         anchors.topMargin: 10
