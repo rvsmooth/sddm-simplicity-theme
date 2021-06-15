@@ -177,6 +177,7 @@ Rectangle {
         arrowColor: "transparent"
         model: sessionModel
         index: sessionModel.lastIndex
+        visible: sessionModel.rowCount() > 1
         KeyNavigation.backtab: shutdown
         KeyNavigation.tab: user_entry
     }
