@@ -32,3 +32,7 @@ Recommended font: Noto Sans
 If you use SDDM version 0.16 or above please read [this](https://github.com/sddm/sddm/wiki/0.16.0-Release-Announcement#configuration)
 
 To change theme graphically and more use [SDDM Config Editor](https://github.com/lxqt/sddm-config-editor)
+
+
+#### Background
+Photo by [Walter Mario Stein](https://unsplash.com/photos/kqfE9mvv7Xw)
