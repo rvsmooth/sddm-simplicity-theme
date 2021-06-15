@@ -125,6 +125,8 @@ Rectangle {
             bottomMargin: 10
             horizontalCenter: parent.horizontalCenter
         }
+
+        spacing: 5
         
         Button {
             id: suspend
