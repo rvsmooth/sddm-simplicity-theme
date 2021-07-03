@@ -90,14 +90,12 @@ Rectangle {
             clip: true
             visible: false
             
-            Text {
+            Label {
                 anchors.centerIn: parent
                 text: textConstants.loginFailed
                 width: 240
                 color: "white"
-                font.pointSize: 11
                 font.bold: true
-                font.capitalization: Font.AllUppercase
                 elide: Qt.locale().textDirection == Qt.RightToLeft ? Text.ElideLeft : Text.ElideRight
                 horizontalAlignment: Qt.AlignHCenter
             }
@@ -156,15 +154,18 @@ Rectangle {
 
     Rectangle {
         id: timeContainer
+        anchors {
+            top: parent.top
+            right: parent.right
+            topMargin: 10
+            rightMargin: 10
+        }
+        border.color: Qt.rgba(1, 1, 1, 0.4)
         color: backgroundColor
-        anchors.top: parent.top
-        anchors.right: parent.right
-        anchors.topMargin: 10
-        anchors.rightMargin: 10
-        width: timelb.width + 7
+        width: timelb.width + 10
         height: session.height
 
-        Text {
+        Label {
             id: timelb
             anchors.centerIn: parent
             text: Qt.formatDateTime(new Date(), "HH:mm")
