@@ -116,6 +116,7 @@ Rectangle {
             id: suspend
             text: textConstants.suspend
             onClicked: sddm.suspend()
+            //visible: sddm.canSuspend
             KeyNavigation.backtab: loginButton
             KeyNavigation.tab: hibernate
         }
@@ -124,6 +125,7 @@ Rectangle {
             id: hibernate
             text: textConstants.hibernate
             onClicked: sddm.hibernate()
+            //visible: sddm.canHibernate
             KeyNavigation.backtab: suspend
             KeyNavigation.tab: restart
         }
@@ -132,6 +134,7 @@ Rectangle {
             id: restart
             text: textConstants.reboot
             onClicked: sddm.reboot()
+            //visible: sddm.canReboot
             KeyNavigation.backtab: suspend; KeyNavigation.tab: shutdown
         }
         
@@ -139,6 +142,7 @@ Rectangle {
             id: shutdown
             text: textConstants.shutdown
             onClicked: sddm.powerOff()
+            //visible: sddm.canPowerOff
             KeyNavigation.backtab: restart; KeyNavigation.tab: session
         }
     }
@@ -192,5 +196,5 @@ Rectangle {
         }
     }
     
-    Component.onCompleted: timertr.start()
+    Component.onCompleted: print(sddm.canPowerOff)
 }
