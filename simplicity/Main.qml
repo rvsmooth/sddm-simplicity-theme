@@ -185,7 +185,6 @@ Rectangle {
             anchors.centerIn: parent
             text: Qt.formatDateTime(new Date(), "HH:mm")
             color: "white"
-            font.pointSize: 11
             horizontalAlignment: Text.AlignHCenter
         }
     }
