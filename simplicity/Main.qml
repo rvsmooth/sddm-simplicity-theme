@@ -67,6 +67,7 @@ Rectangle {
                 implicitHeight: 30
                 color: pw_entry.activeFocus ? hoverBackgroundColor : backgroundColor
                 border.color: Qt.rgba(1, 1, 1, 0.4)
+                radius: 3
             }
             onAccepted: sddm.login(user_entry.getValue(), pw_entry.text, session.currentIndex)
             KeyNavigation.backtab: user_entry
@@ -89,6 +90,7 @@ Rectangle {
             color: "#F44336"
             clip: true
             visible: false
+            radius: 3
             
             Label {
                 anchors.centerIn: parent
@@ -173,6 +175,7 @@ Rectangle {
             rightMargin: 10
         }
         border.color: Qt.rgba(1, 1, 1, 0.4)
+        radius: 3
         color: backgroundColor
         width: timelb.width + 10
         height: session.height

@@ -63,7 +63,7 @@ ComboBox {
         border.color: Qt.rgba(1, 1, 1, 0.4)
         border.width: 1
         color: control.pressed ? Qt.rgba(0, 0, 0, 0.6) : Qt.rgba(0, 0, 0, 0.4)
-        radius: 2
+        radius: 3
     }
 
     popup: Popup {
@@ -83,7 +83,6 @@ ComboBox {
         background: Rectangle {
             border.color: Qt.rgba(1, 1, 1, 0.4)
             color: Qt.rgba(0, 0, 0, 0.4)
-            radius: 2
         }
     }
 
