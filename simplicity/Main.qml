@@ -117,6 +117,14 @@ Rectangle {
             text: textConstants.suspend
             onClicked: sddm.suspend()
             KeyNavigation.backtab: loginButton
+            KeyNavigation.tab: hibernate
+        }
+
+        Simple.Button {
+            id: hibernate
+            text: textConstants.hibernate
+            onClicked: sddm.hibernate()
+            KeyNavigation.backtab: suspend
             KeyNavigation.tab: restart
         }
         
