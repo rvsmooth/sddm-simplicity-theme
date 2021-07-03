@@ -1,4 +1,5 @@
-import QtQuick 2.0
+import QtQuick 2.12
+import QtQuick.Controls 2.12
 import SddmComponents 2.0
 import "SimpleControls" as Simple
 
@@ -21,7 +22,7 @@ Rectangle {
         onLoginSucceeded: {}
         
         onLoginFailed: {
-            pw_entry.text = ""
+            pw_entry.clear()
             pw_entry.focus = true
             
             errorMsgContainer.visible = true
@@ -44,54 +45,39 @@ Rectangle {
         anchors.verticalCenter: parent.verticalCenter
         spacing: 10
 
-        
-        Simple.SimpleUserComboBox {
+        Simple.ComboBox {
             id: user_entry
-            width: 250
-            color: backgroundColor
-            dropDownColor: backgroundColor
-            borderColor: "transparent"
-            textColor: "white"
-            arrowIcon: "images/arrow_down.svg"
-            arrowColor: "transparent"
             model: userModel
-            index: userModel.lastIndex
-            font.pointSize: 11
+            currentIndex: userModel.lastIndex
+            textRole: "realName"
+            width: 250
             KeyNavigation.backtab: session
             KeyNavigation.tab: pw_entry
         }
 
-        PasswordBox {
+        TextField {
             id: pw_entry
-            width: 250
-            color: backgroundColor
-            borderColor: "transparent"
-            focusColor: hoverBackgroundColor
-            hoverColor: hoverBackgroundColor
-            textColor: "white"
-            font.pointSize: 11
+            color: "white"
+            echoMode: TextInput.Password
             focus: true
+            placeholderText: textConstants.promptPassword
+            width: 250
+            background: Rectangle {
+                implicitWidth: 100
+                implicitHeight: 30
+                color: pw_entry.activeFocus ? hoverBackgroundColor : backgroundColor
+                border.color: Qt.rgba(1, 1, 1, 0.4)
+            }
+            onAccepted: sddm.login(user_entry.getValue(), pw_entry.text, session.currentIndex)
             KeyNavigation.backtab: user_entry
             KeyNavigation.tab: loginButton
-
-            Keys.onPressed: {
-                if (event.key === Qt.Key_Return || event.key === Qt.Key_Enter) {
-                    sddm.login(user_entry.currentText, pw_entry.text, session.index)
-                    event.accepted = true
-                }
-            }
         }
 
-        Button {
+        Simple.Button {
             id: loginButton
             text: textConstants.login
             width: 250
-            color: backgroundColor
-            activeColor: hoverBackgroundColor
-            pressedColor: hoverBackgroundColor
-            font.pointSize: 11
-            font.bold: false
-            onClicked: sddm.login(user_entry.currentText, pw_entry.text, session.index)
+            onClicked: sddm.login(user_entry.getValue(), pw_entry.text, session.currentIndex)
             KeyNavigation.backtab: pw_entry
             KeyNavigation.tab: suspend
         }
@@ -128,60 +114,41 @@ Rectangle {
 
         spacing: 5
         
-        Button {
+        Simple.Button {
             id: suspend
             text: textConstants.suspend
-            color: backgroundColor
-            pressedColor: hoverBackgroundColor
-            activeColor: hoverBackgroundColor
-            font.pointSize: 11
-            font.bold: false
             onClicked: sddm.suspend()
             KeyNavigation.backtab: loginButton
             KeyNavigation.tab: restart
         }
         
-        Button {
+        Simple.Button {
             id: restart
             text: textConstants.reboot
-            color: backgroundColor
-            pressedColor: hoverBackgroundColor
-            activeColor: hoverBackgroundColor
-            font.pointSize: 11
-            font.bold: false
             onClicked: sddm.reboot()
             KeyNavigation.backtab: suspend; KeyNavigation.tab: shutdown
         }
         
-        Button {
+        Simple.Button {
             id: shutdown
             text: textConstants.shutdown
-            color: backgroundColor
-            pressedColor: hoverBackgroundColor
-            activeColor: hoverBackgroundColor
-            font.pointSize: 11
-            font.bold: false
             onClicked: sddm.powerOff()
             KeyNavigation.backtab: restart; KeyNavigation.tab: session
         }
     }
 
-    Simple.SimpleComboBox {
+    Simple.ComboBox {
         id: session
-        anchors.left: parent.left
-        anchors.leftMargin: 10
-        anchors.top: parent.top
-        anchors.topMargin: 10
-        width: 200
-        color: backgroundColor
-        dropDownColor: backgroundColor
-        borderColor: "transparent"
-        textColor: "White"
-        font.pointSize: 11
-        arrowIcon: "images/arrow_down.svg"
-        arrowColor: "transparent"
+        anchors {
+            left: parent.left
+            leftMargin: 10
+            top: parent.top
+            topMargin: 10
+        }
+        currentIndex: sessionModel.lastIndex
         model: sessionModel
-        index: sessionModel.lastIndex
+        textRole: "name"
+        width: 200
         visible: sessionModel.rowCount() > 1
         KeyNavigation.backtab: shutdown
         KeyNavigation.tab: user_entry
@@ -216,12 +183,5 @@ Rectangle {
         }
     }
     
-    Component.onCompleted: {
-        /*if (user_entry.text === "")
-            user_entry.focus = true
-        else
-            pw_entry.focus = true*/
-        timetr.start()
-        pw_entry.focus = true
-    }
+    Component.onCompleted: timertr.start()
 }
