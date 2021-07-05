@@ -1,13 +1,12 @@
 [SddmGreeterTheme]
 Name=Simplicity
-
 Description=Simple SDDM theme
 Type=sddm-theme
-Author=Gabriel Retana
-Copyright=(c) 2019, Gabriel Retana
-Screenshot=simplicity.png
+Author=Gabriel Ibáñez
+Copyright=(c) 2019, Gabriel Ibáñez
+Screenshot=screenshot.jpg
 License=GPL
-Version=0.3
+Version=1.0
 MainScript=Main.qml
 ConfigFile=theme.conf
 TranslationsDirectory=translations
