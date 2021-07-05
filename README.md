@@ -1,11 +1,13 @@
 ## Simplicity
 Simple SDDM theme
 
-![Screenshot](https://i.imgur.com/o1QDc26.png)
+![Screenshot](https://i.imgur.com/VS0XiF7.jpg)
 
+### Dependencies
+Qt Quick Controls 2 >=5.12 (```qt5-quickcontrols2```, ```qml-module-qtquick-controls2```, ...)
 
 ### Install
-Move simplicity folder to 
+Move ```simplicity``` folder to
 
     /usr/share/sddm/themes
 
@@ -18,16 +20,16 @@ search for
     [Theme]
     Current=theme-name
 
-and change to 
+and change to
 
     [Theme]
     Current=simplicity
 
-#### ArchLinux
+#### Arch Linux
 From [AUR](https://aur.archlinux.org/packages/simplicity-sddm-theme-git/)
 
 #### Font
-Recommended font: Noto Sans
+Recommended font: **Noto Sans**
 
 If you use SDDM version 0.16 or above please read [this](https://github.com/sddm/sddm/wiki/0.16.0-Release-Announcement#configuration)
 
