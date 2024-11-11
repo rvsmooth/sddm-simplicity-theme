@@ -1,13 +1,11 @@
 #+title: Sddm Simplicity Theme
 
 * Installation
-** Dependencies
-Install the following dependency along with sddm package with your preferred package manager.
++ Install the following dependency along with sddm package with your preferred package manager.
 #+begin_src 
  qt5-quickcontrols2 sddm
 #+end_src
 
-** Installation
 + Move the `simplicity` folder to `/usr/share/sddm/themes`.
 + Edit the file `/etc/sddm.conf` or create it, if it does not exist already, as root. 
    #+begin_src 
