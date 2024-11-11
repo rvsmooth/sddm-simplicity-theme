@@ -1,42 +1,35 @@
-* Simplicity
-  Simple SDDM theme
+#+title: Sddm Simplicity Theme
 
-  [[https://i.imgur.com/VS0XiF7.jpg][Screenshot]]
-
+* Installation
 ** Dependencies
-   - Qt Quick Controls 2 >= 5.12
-   - Packages: 
-     - qt5-quickcontrols2
-     - qml-module-qtquick-controls2
-
-** Dependencies for Arch Linux
-   - qt5-quickcontrols
-   - qt5-quickcontrols2
+Install the following dependency along with sddm package with your preferred package manager.
+#+begin_src 
+ qt5-quickcontrols2 sddm
+#+end_src
 
 ** Installation
-   1. Move the `simplicity` folder to `/usr/share/sddm/themes`.
-   2. Edit the file `/etc/sddm.conf`.
-   3. Search for the section:
-      ```
++ Move the `simplicity` folder to `/usr/share/sddm/themes`.
++ Edit the file `/etc/sddm.conf` or create it, if it does not exist already, as root. 
+   #+begin_src 
+   sudo vim /etc/sddm.conf
+   #+end_src
++ Look for this section or add it if it does not exist.
+     #+begin_src 
       [Theme]
       Current=theme-name
-      ```
-   4. Change the line to:
-      ```
+     #+end_src 
+     
++ Change the line as shown.
+   #+begin_src 
       [Theme]
       Current=simplicity
-      ```
+   #+end_src
 
-** Arch Linux Installation
-   You can install the theme from the [AUR](https://aur.archlinux.org/packages/simplicity-sddm-theme-git/).
-
++ Reboot or restart sddm(sudo systemctl restart sddm)
 ** Font
    - Recommended font: **Noto Sans**
 
-   If you're using SDDM version 0.16 or above, please refer to the [release announcement](https://github.com/sddm/sddm/wiki/0.16.0-Release-Announcement#configuration).
+* Screenshots
+[[file:greeter.png]]
 
-** Graphical Configuration
-   For a graphical interface to change the theme and other settings, use the [SDDM Config Editor](https://github.com/lxqt/sddm-config-editor).
 
-** Background
-   The background image is by [Walter Mario Stein](https://unsplash.com/photos/kqfE9mvv7Xw).
