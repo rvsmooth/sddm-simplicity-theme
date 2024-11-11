@@ -11,16 +11,19 @@ Install the following dependency along with sddm package with your preferred pac
 + Move the `simplicity` folder to `/usr/share/sddm/themes`.
 + Edit the file `/etc/sddm.conf` or create it, if it does not exist already, as root. 
    #+begin_src 
+
    sudo vim /etc/sddm.conf
    #+end_src
 + Look for this section or add it if it does not exist.
      #+begin_src 
+
       [Theme]
       Current=theme-name
      #+end_src 
      
 + Change the line as shown.
    #+begin_src 
+
       [Theme]
       Current=simplicity
    #+end_src
